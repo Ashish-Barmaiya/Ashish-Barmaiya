@@ -65,7 +65,7 @@ Tech: TypeScript, Node.js, PostgreSQL, Cryptography
 - Cryptographic challenge-response for heirs
 - Designed against malicious server + insider threat
 
-Tech: TypeScript, Crypto, Security Design  
+Tech: JavaScript, Node.js, Next.js, React, Crypto, Security Design
 🔗 https://github.com/Ashish-Barmaiya/securevault
 
 ---
