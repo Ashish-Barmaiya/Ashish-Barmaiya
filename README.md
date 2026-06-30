@@ -59,6 +59,8 @@ Compared to the original Node.js implementation, the Go rewrite delivers roughly
 
 **Repository →** https://github.com/Ashish-Barmaiya/torus-proxy
 
+---
+
 ## 📦 Other Projects
 
 ## Candie
