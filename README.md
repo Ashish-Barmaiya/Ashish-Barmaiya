@@ -1,13 +1,12 @@
 # Hi, I'm Ashish 👋
 
-**Backend & Systems Engineer** — I build correctness-first infrastructure, secure APIs, and resilient distributed systems.
+**Backend & Systems Engineer** focused on networking, distributed systems, and infrastructure.
 
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
@@ -15,72 +14,100 @@
 
 ---
 
-### 🧠 Engineering Philosophy
+## 🚀 Currently Building
 
-I build systems that **fail loudly and verifiably**. I prefer simple, auditable architectures over magical abstractions. My focus is on the network and protocol layers — explicit trust boundaries, state machine invariants, cryptographic proofs, and designing for adversarial conditions.
+## Torus — High Performance Layer 7 Reverse Proxy & Edge API Gateway
 
----
+Torus is my current long-term systems project.
 
-### 🚀 Featured Engineering
+I originally built it in Node.js/TypeScript, then rewrote the entire project in **Go** to better understand how production reverse proxies work internally. The goal isn't simply to proxy HTTP requests—it's to build the major components that power modern API gateways while relying primarily on Go's standard library.
 
-#### ⚡ Torus Proxy — High‑Performance Multi‑Core API Gateway (now in Go)
+Current capabilities include:
 
-A Layer 7 reverse proxy rewritten from scratch in Go after an initial Node.js prototype.  
-Torus is built for raw speed and zero‑downtime operations, leveraging Go’s concurrency model and a zero‑allocation hot path.
+- Reverse proxying with `httputil.ReverseProxy`
+- Longest-prefix route matching
+- Atomic round-robin load balancing
+- Active health checking with automatic recovery
+- Graceful Shutdown
+- Tuned HTTP transport for high connection reuse
+- Request tracing via `X-Request-ID`
+- Race-tested Go codebase
 
-**Performance (dual‑core i3‑1115G4, Linux, wrk):**
-- **98,566 req/s** — short‑circuit memory path (HTTP parse + routing overhead only)
-- **17,866 req/s** — full production proxying to Go mock backends
-- **6.3× faster** than the original Node.js version on identical hardware
+### Performance
 
-**Roadmap (features from the Node.js prototype being ported):**
-- Native TLS termination (currently plain HTTP)
-- Zero‑downtime hot reloads via IPC
-- Atomic rate limiting with Redis‑backed Token Buckets
-- Prometheus metrics and structured NDJSON loggin
+Benchmarked on an **Intel i3-1115G4 (2C/4T)** using **wrk**.
 
-**Tech:** Go, Node.js (history), Redis, Clustering, TCP/HTTP, Linux  
-🔗 [github.com/Ashish-Barmaiya/torus-proxy](https://github.com/Ashish-Barmaiya/torus-proxy)
+| Scenario | Throughput |
+|----------|-----------:|
+| Production reverse proxying | **17,865 requests/sec** |
+| Memory-path routing | **98,565 requests/sec** |
 
----
+Compared to the original Node.js implementation, the Go rewrite delivers roughly:
 
-#### 🔐 Attest — Tamper‑Evident Audit Logging
+- **10.8× higher throughput**
+- **10x lower memory usage**
+- Single-process goroutine architecture instead of clustered worker processes
 
-An append‑only audit log with cryptographic verification, designed for zero‑trust environments.
+### Current Roadmap
 
-- **Cryptographic Integrity:** Hash‑chained event log with external anchoring.
-- **Immutability:** Detects history rewrites even after a total database compromise.
-- **Verification:** Ships with offline verification tooling for independent audit proofs.
+- TLS termination
+- Rate Limiting
+- Zero-downtime hot reloads
+- Prometheus metrics
+- Websocket proxying
+- Middleware pipeline
 
-**Tech:** TypeScript, Node.js, PostgreSQL, Cryptography, Docker  
-🔗 [github.com/Ashish-Barmaiya/attest](https://github.com/Ashish-Barmaiya/attest)
+**Repository →** https://github.com/Ashish-Barmaiya/torus-proxy
 
----
+## 📦 Other Projects
 
-#### 🗝 SecureVault — Zero‑Knowledge Digital Inheritance
+## Candie
 
-A digital asset handoff system built on explicit state machines and zero‑trust assumptions.
+Turn your favorite movies into living wallpapers.
 
-- **Zero‑Knowledge Architecture:** Strict client‑side encryption — the server sees nothing.
-- **State Machine Routing:** `ACTIVE` → `GRACE` → `INHERITABLE` → `CLAIMED` lifecycle.
-- **Adversarial Design:** Cryptographic challenge‑response prevents server/insider attacks.
+Candie is a Linux-first CLI that extracts beautiful frames from locally stored movies or videos and turns them into rotating desktop wallpapers. With just two commands, you can generate wallpaper-ready frames from any offline video and bring your desktop to life.
 
-**Tech:** TypeScript, Next.js, Node.js, PostgreSQL, Prisma, Redux, Web Crypto API  
-🔗 [github.com/Ashish-Barmaiya/securevault](https://github.com/Ashish-Barmaiya/securevault)
+Tech: Go · FFmpeg · Linux
 
----
-
-### 🛠 Technical Skills
-
-- **Languages:** Go, TypeScript, JavaScript, SQL  
-- **Systems:** TCP/HTTP networking, reverse proxies, stream processing, multi‑process clustering  
-- **Security:** TLS termination, hash‑chaining, key derivation, threat modeling, zero‑knowledge designs  
-- **Infrastructure:** Linux, Docker, Node.js runtime, PostgreSQL, Redis  
-- **Frameworks:** Next.js, React, Redux, Tailwind CSS  
+**Repository →** https://github.com/Ashish-Barmaiya/candie
 
 ---
 
-### 📬 Contact
+## Attest
 
-- **Email:** ashishbarmaiya2908@gmail.com  
-- **LinkedIn:** [linkedin.com/in/ashish-barmaiya-37a263152](https://www.linkedin.com/in/ashish-barmaiya-37a263152)
+Tamper-evident audit logging built around cryptographic hash chains.
+
+Instead of trusting database integrity, Attest allows historical logs to be independently verified even after database compromise.
+
+**Tech:** TypeScript · PostgreSQL · Docker · Cryptography
+
+**Repository →** https://github.com/Ashish-Barmaiya/attest
+
+---
+
+## Securevault
+
+A zero-knowledge digital inheritance platform.
+
+Files are encrypted entirely on the client before upload, hile the backend only manages encrypted blobs and lifecycle state transitions.
+
+**Tech:** Next.js · TypeScript · PostgreSQL · Prisma · Web Crypto API
+
+---
+
+### Areas of Interest
+
+- Distributed Systems
+- Low-Level Systems
+- Networking
+- Backend Infrastructure
+- Reverse Proxies
+- System Design
+- Perfomance Engineering
+
+---
+
+### Connect
+
+- Email: ashishbarmaiya2908@gmail.com
+- LinkedIn: https://www.linkedin.com/in/ashish-barmaiya-37a263152
