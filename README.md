@@ -28,6 +28,7 @@ Current capabilities include:
 - Longest-prefix route matching
 - Atomic round-robin load balancing
 - Active health checking with automatic recovery
+- TLS termination
 - Graceful Shutdown
 - Tuned HTTP transport for high connection reuse
 - Request tracing via `X-Request-ID`
@@ -50,12 +51,11 @@ Compared to the original Node.js implementation, the Go rewrite delivers roughly
 
 ### Current Roadmap
 
-- TLS termination
-- Rate Limiting
 - Zero-downtime hot reloads
 - Prometheus metrics
 - Websocket proxying
 - Middleware pipeline
+- Rate Limiting
 
 **Repository →** https://github.com/Ashish-Barmaiya/torus-proxy
 
