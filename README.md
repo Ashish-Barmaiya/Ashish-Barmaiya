@@ -111,5 +111,4 @@ Files are encrypted entirely on the client before upload, hile the backend only 
 
 ### Connect
 
-- Email: ashishbarmaiya2908@gmail.com
-- LinkedIn: https://www.linkedin.com/in/ashish-barmaiya-37a263152
+[Email](ashishbarmaiya2908@gmail.com) | [LinkedIn](https://www.linkedin.com/in/ashish-barmaiya-37a263152) | [X](https://x.com/ashish_barmaiya) 
