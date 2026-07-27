@@ -14,48 +14,55 @@
 
 ---
 
+---
+
 ## 🚀 Currently Building
 
-## Torus — High Performance Layer 7 Reverse Proxy & Edge API Gateway
+## Torus — High-Performance Layer 7 Reverse Proxy & Edge API Gateway
 
-Torus is my current long-term systems project.
+Torus is my long-term systems engineering project focused on building a production-grade reverse proxy and API gateway from first principles.
 
-I originally built it in Node.js/TypeScript, then rewrote the entire project in **Go** to better understand how production reverse proxies work internally. The goal isn't simply to proxy HTTP requests—it's to build the major components that power modern API gateways while relying primarily on Go's standard library.
+I originally built Torus in Node.js/TypeScript before rewriting the entire project in **Go** to better understand how modern reverse proxies are designed and implemented. The objective is not simply to forward HTTP requests, but to explore the architecture, concurrency models, networking, and systems design techniques that underpin production infrastructure software.
 
 Current capabilities include:
 
-- Reverse proxying with `httputil.ReverseProxy`
+- HTTP reverse proxying with `httputil.ReverseProxy`
 - Longest-prefix route matching
 - Atomic round-robin load balancing
 - Active health checking with automatic recovery
 - TLS termination
-- Graceful Shutdown
-- Tuned HTTP transport for high connection reuse
+- Graceful shutdown
+- Zero-downtime configuration hot reload
+- Immutable runtime generations with atomic runtime replacement
 - Request tracing via `X-Request-ID`
-- Race-tested Go codebase
+- Optimized HTTP transport for high connection reuse
+- Comprehensive unit, integration, and race-tested concurrency
 
 ### Performance
 
-Benchmarked on an **Intel i3-1115G4 (2C/4T)** using **wrk**.
+Benchmarked on an **Intel Core i3-1115G4 (2C/4T)** using **wrk**.
 
 | Scenario | Throughput |
 |----------|-----------:|
 | Production reverse proxying | **17,865 requests/sec** |
 | Memory-path routing | **98,565 requests/sec** |
 
-Compared to the original Node.js implementation, the Go rewrite delivers roughly:
+Compared to the original Node.js implementation, the Go rewrite delivers approximately:
 
 - **10.8× higher throughput**
-- **10x lower memory usage**
-- Single-process goroutine architecture instead of clustered worker processes
+- **~10× lower memory usage**
+- Lightweight goroutine-based concurrency instead of clustered worker processes
 
-### Current Roadmap
+### Next Milestones
 
-- Zero-downtime hot reloads
 - Prometheus metrics
-- Websocket proxying
+- Grafana dashboards
+- Passive health checking
+- Weighted round-robin load balancing
+- WebSocket proxying
 - Middleware pipeline
-- Rate Limiting
+- Rate limiting
+- OpenTelemetry support
 
 **Repository →** https://github.com/Ashish-Barmaiya/torus-proxy
 
