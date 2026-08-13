@@ -38,8 +38,8 @@ It started as a Node.js/TypeScript implementation and evolved into a Go-based sy
 
 <div align="center">
 
-[GitHub](https://github.com/Ashish-Barmaiya) ·
 [LinkedIn](https://www.linkedin.com/in/ashish-barmaiya-37a263152) ·
-[X](https://x.com/ashish_barmaiya)
+[X](https://x.com/ashish_barmaiya) ·
+[Blog](https://ashishbarmaiya.hashnode.dev/)
 
 </div>
